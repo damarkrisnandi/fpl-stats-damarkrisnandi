@@ -62,11 +62,11 @@ class BubblePointsVsValue extends React.Component {
         return (
             <div >
                 <Bubble
-                height={window.innerWidth}
+                height={window.innerHeight}
                 options={{ 
                     responsive: true, 
                     maintainAspectRatio: false,
-                    aspectRatio: 1,
+                    // aspectRatio: 1,
                     plugins: {
                         legend: {
                             display: false
