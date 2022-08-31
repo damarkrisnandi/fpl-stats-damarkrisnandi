@@ -42,7 +42,7 @@ class BubblePointsVsValue extends React.Component {
                     const g = Math.floor(Math.random() * 255);
                     const b = Math.floor(Math.random() * 255);
                     return {
-                        label: obj.name,
+                        label: obj.name + [0, 25, 50, 75].includes(obj.chance_of_playing_next_round) && `(${obj.chance_of_playing_next_round}% of playing next round)`,
                         backgroundColor: `rgba(${r},${g},${b},0.2)`,
                         borderColor: `rgba(${r},${g},${b},1)`,
                         data: [data]
