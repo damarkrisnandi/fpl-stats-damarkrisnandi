@@ -1,6 +1,6 @@
 import { Chart as ChartJS, registerables } from 'chart.js';
 import React from 'react';
-import { Bubble, Line } from "react-chartjs-2";
+import { Bubble } from "react-chartjs-2";
 ChartJS.register(...registerables);
 
 class BubblePointsVsValue extends React.Component {
