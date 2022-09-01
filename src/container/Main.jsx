@@ -16,16 +16,18 @@ class Main extends Component {
                 {header: 'Points per Value', field: 'point_per_value'}
             ],
             collections: [],
-            size: 0
+            size: 0,
+            position: ''
         } 
     }
     
     componentDidMount() {
         getRecomendation().then(data => {
             const params = new URLSearchParams(window.location.search)
-            let size = null;
+            let size = null; let position = '';
             if (params.has('size')) size = parseInt(params.get('size'))
-            this.setState({recomendationList: data, size})
+            if (params.has('position')) position = parseInt(params.get('position'))
+            this.setState({recomendationList: data, size, position})
         })
 
         // this.handleClickHistory(225);
@@ -61,7 +63,7 @@ class Main extends Component {
             <Fragment>
                 {/* {this.state.collections.length > 0 && (<SurplusLineChart collections={this.state.collections} label={'gameweek'} values={'point_per_value'}/>)} */}
 
-                <BubblePointsVsValue data={this.state.recomendationList} size={this.state.size}/>
+                <BubblePointsVsValue data={this.state.recomendationList} size={this.state.size} position={this.state.position}/>
                 {/* {this.state.collections.length === 0 && (<Table list={this.state.recomendationList} 
                 columns={this.state.columns} 
                 styleRowCondition={this.setStyleByCondition}
