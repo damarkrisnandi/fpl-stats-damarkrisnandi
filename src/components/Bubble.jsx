@@ -93,6 +93,7 @@ class BubblePointsVsValue extends React.Component {
                     },
                     scales: {
                         yAxes: {
+
                             title: {
                                 display: true,
                                 text: 'Points',
@@ -101,7 +102,8 @@ class BubblePointsVsValue extends React.Component {
                                 }
                             },
                             ticks: {
-                                beginAtZero: true
+                                beginAtZero: true,
+                                stepSize: 1
                             }
                         },
                         xAxes: {
