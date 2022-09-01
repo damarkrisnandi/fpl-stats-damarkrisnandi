@@ -40,6 +40,9 @@ class BubblePointsVsValue extends React.Component {
             const upper = Math.max(...selectCollections.map(data => data.cost));
             const defaultDataset = {
                 type: 'line',
+                label: 'Lower',
+                backgroundColor: `rgba(240,128,128,0.2)`,
+                borderColor: `rgba(240,128,128,1)`,
                 data: [
                     {x: lower, y: lower},
                     {x: upper, y: upper}
