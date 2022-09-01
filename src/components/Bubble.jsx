@@ -36,8 +36,8 @@ class BubblePointsVsValue extends React.Component {
         const selectCollections = this.props.data.slice(0, this.props.size || 50);
             console.log('masuk sini apa engga')
             console.log(this.props.data);
-            const lower = Math.min(...selectCollections.map(data => data.points)) - 0.5;
-            const upper = Math.max(...selectCollections.map(data => data.cost));
+            const lower = Math.min(...selectCollections.map(data => data.points)) - 2;
+            const upper = Math.max(...selectCollections.map(data => data.cost)) + 2;
             const defaultDataset = {
                 type: 'line',
                 label: 'Lower',
