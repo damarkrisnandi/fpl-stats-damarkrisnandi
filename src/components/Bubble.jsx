@@ -36,11 +36,12 @@ class BubblePointsVsValue extends React.Component {
         let dataFilter = this.props.data;
 
         if (this.props.position && this.props.position.length > 0) {
-            dataFilter.filter(data => this.props.position === data.position);
+            console.log('posisi', this.props.position)
+            dataFilter = dataFilter.filter(data => this.props.position === data.position);
         }
         const selectCollections = dataFilter.slice(0, this.props.size || 50)
-            const lower = Math.min(...selectCollections.map(data => data.points)) - 2;
-            const upper = Math.max(...selectCollections.map(data => data.cost)) + 2;
+            const lower = Math.floor(Math.min(...selectCollections.map(data => data.points)) - 2);
+            const upper = Math.ceil(Math.max(...selectCollections.map(data => data.cost)) + 2);
             const defaultDataset = {
                 type: 'line',
                 label: 'Lower',

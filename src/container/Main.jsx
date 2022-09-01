@@ -24,9 +24,11 @@ class Main extends Component {
     componentDidMount() {
         getRecomendation().then(data => {
             const params = new URLSearchParams(window.location.search)
+            console.log(params.get('size'), params.has('position'), params.get('position'))
             let size = null; let position = '';
-            if (params.has('size')) size = parseInt(params.get('size'))
-            if (params.has('position')) position = params.get('position')
+            if (params.has('size')) { size = parseInt(params.get('size')) }
+
+            if (params.has('position')) { position = params.get('position').toString() }
             this.setState({recomendationList: data, size, position})
         })
 
