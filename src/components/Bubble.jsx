@@ -115,7 +115,8 @@ class BubblePointsVsValue extends React.Component {
                                 }
                             },
                             ticks: {
-                                beginAtZero: true
+                                beginAtZero: true,
+                                stepSize: 1
                             }
                         }
                     }
