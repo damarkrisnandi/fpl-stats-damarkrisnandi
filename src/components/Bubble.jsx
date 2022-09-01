@@ -36,7 +36,7 @@ class BubblePointsVsValue extends React.Component {
         const selectCollections = this.props.data.slice(0, this.props.size || 50);
             console.log('masuk sini apa engga')
             console.log(this.props.data);
-            const lower = 4; // lowest cost
+            const lower = Math.min(...selectCollections.map(data => data.points));
             const upper = Math.max(...selectCollections.map(data => data.cost));
             const defaultDataset = {
                 type: 'line',
@@ -44,7 +44,7 @@ class BubblePointsVsValue extends React.Component {
                 backgroundColor: `rgba(240,128,128,0.2)`,
                 borderColor: `rgba(240,128,128,1)`,
                 data: [
-                    {x: lower, y: lower},
+                    {x: lower / 2, y: lower},
                     {x: upper, y: upper * 2} // naikin standard
                 ]
             }
