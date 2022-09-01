@@ -59,7 +59,7 @@ class Main extends Component {
             <Fragment>
                 {/* {this.state.collections.length > 0 && (<SurplusLineChart collections={this.state.collections} label={'gameweek'} values={'point_per_value'}/>)} */}
 
-                <BubblePointsVsValue data={this.state.recomendationList}/>
+                <BubblePointsVsValue data={this.state.recomendationList} size={200}/>
                 {/* {this.state.collections.length === 0 && (<Table list={this.state.recomendationList} 
                 columns={this.state.columns} 
                 styleRowCondition={this.setStyleByCondition}

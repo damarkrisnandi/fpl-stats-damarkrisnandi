@@ -32,11 +32,22 @@ class BubblePointsVsValue extends React.Component {
         if (prevProps.data.length === this.props.data.length) {
             return;
         }
+
+        const selectCollections = this.props.data.slice(0, this.props.size || 50);
             console.log('masuk sini apa engga')
             console.log(this.props.data);
+            const lower = Math.min(...selectCollections.map(data => data.cost));
+            const upper = Math.max(...selectCollections.map(data => data.cost));
+            const defaultDataset = {
+                type: 'line',
+                data: [
+                    {x: lower, y: lower},
+                    {x: upper, y: upper}
+                ]
+            }
             this.setState({data: {
                 labels: 'Points VS Value',
-                datasets: this.props.data.slice(0, this.props.size || 50).map(obj => {
+                datasets: [defaultDataset, ...selectCollections.map(obj => {
                     const data = {x: obj.cost, y: obj.points, r: obj.point_per_value * 5};
                     const r = Math.floor(Math.random() * 255);
                     const g = Math.floor(Math.random() * 255);
@@ -48,7 +59,7 @@ class BubblePointsVsValue extends React.Component {
                         data: [data]
         
                     }
-                })
+                })]
             }}, () => {
                 console.log(this.state.data)
             })
@@ -82,7 +93,7 @@ class BubblePointsVsValue extends React.Component {
                                 }
                             },
                             ticks: {
-                                precision: 0
+                                beginAtZero: true
                             }
                         },
                         xAxes: {
@@ -92,6 +103,9 @@ class BubblePointsVsValue extends React.Component {
                                 font: {
                                     size: 15
                                 }
+                            },
+                            ticks: {
+                                beginAtZero: true
                             }
                         }
                     }
