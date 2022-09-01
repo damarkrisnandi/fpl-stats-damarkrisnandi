@@ -15,14 +15,17 @@ class Main extends Component {
                 {header: 'Surplus', field: 'surplus'},
                 {header: 'Points per Value', field: 'point_per_value'}
             ],
-            dataSurpluses: [],
-            collections: []
+            collections: [],
+            size: 0
         } 
     }
     
     componentDidMount() {
         getRecomendation().then(data => {
-            this.setState({recomendationList: data})
+            const params = new URLSearchParams(window.location.search)
+            let size = null;
+            if (params.has('size')) size = parseInt(params.get('size'))
+            this.setState({recomendationList: data, size})
         })
 
         // this.handleClickHistory(225);
@@ -30,7 +33,6 @@ class Main extends Component {
     }
 
     handleClickHistory = (id) => {
-        console.log('masuk sini')
         getPlayerSurpluses(id).then(res => {
 
             this.setState({collections: [{dataSurpluses: res}, ...this.state.collections.map(o => o.dataSurpluses)]})
@@ -59,7 +61,7 @@ class Main extends Component {
             <Fragment>
                 {/* {this.state.collections.length > 0 && (<SurplusLineChart collections={this.state.collections} label={'gameweek'} values={'point_per_value'}/>)} */}
 
-                <BubblePointsVsValue data={this.state.recomendationList} size={200}/>
+                <BubblePointsVsValue data={this.state.recomendationList} size={this.state.size}/>
                 {/* {this.state.collections.length === 0 && (<Table list={this.state.recomendationList} 
                 columns={this.state.columns} 
                 styleRowCondition={this.setStyleByCondition}
