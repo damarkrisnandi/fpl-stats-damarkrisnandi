@@ -43,6 +43,7 @@ class BubblePointsVsValue extends React.Component {
                 label: 'Lower',
                 backgroundColor: `rgba(240,128,128,0.2)`,
                 borderColor: `rgba(240,128,128,1)`,
+                fill: true,
                 data: [
                     {x: lower / 2, y: lower},
                     {x: upper, y: upper * 2} // naikin standard
