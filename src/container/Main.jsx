@@ -26,7 +26,7 @@ class Main extends Component {
             const params = new URLSearchParams(window.location.search)
             let size = null; let position = '';
             if (params.has('size')) size = parseInt(params.get('size'))
-            if (params.has('position')) position = parseInt(params.get('position'))
+            if (params.has('position')) position = params.get('position')
             this.setState({recomendationList: data, size, position})
         })
 
