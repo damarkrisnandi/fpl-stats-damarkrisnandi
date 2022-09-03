@@ -61,7 +61,7 @@ class BubblePointsVsValue extends React.Component {
                     const g = Math.floor(Math.random() * 255);
                     const b = Math.floor(Math.random() * 255);
                     return {
-                        label: obj.name,
+                        label: `[${obj.id}]${obj.name}`,
                         backgroundColor: `rgba(${r},${g},${b},0.2)`,
                         borderColor: `rgba(${r},${g},${b},1)`,
                         data: [data]
